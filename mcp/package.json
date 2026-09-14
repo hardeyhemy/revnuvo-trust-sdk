@@ -1,0 +1,22 @@
+{
+  "name": "revnuvo-trust-mcp",
+  "version": "0.1.0",
+  "description": "Revnuvo Trust MCP server: verify companies, domains and counterparties from inside any AI agent. Entity resolution (200+ jurisdictions), UBO, sanctions screening, 0-100 fraud scoring. x402-payable ($0.10/call, USDC on Base) or API key.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "revnuvo-trust-mcp": "./trust-mcp.mjs" },
+  "main": "./trust-mcp.mjs",
+  "files": ["trust-mcp.mjs", "README.md"],
+  "keywords": [
+    "mcp", "model-context-protocol", "ai-agents", "trust", "verification",
+    "kyb", "fraud-scoring", "x402", "agentic-commerce", "identity",
+    "entity-resolution", "sanctions-screening", "revnuvo"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "https://github.com/hardeyhemy/revnuvo-trust-sdk" },
+  "homepage": "https://www.revnuvo.site/products/trust"
+}

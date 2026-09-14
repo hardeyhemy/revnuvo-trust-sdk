@@ -1,0 +1,19 @@
+# Smithery configuration file
+# https://smithery.ai/docs/concepts/smithery-yaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      revnuvoApiKey:
+        type: string
+        title: Revnuvo API Key
+        description: Optional API key. If omitted, the server runs in x402 pay-per-call mode ($0.10 USDC on Base).
+        isSecret: true
+  commandFunction: |-
+    (config) => ({
+      "command": "npx",
+      "args": ["-y", "revnuvo-trust-mcp"],
+      "env": config && config.revnuvoApiKey ? { REVNUVO_API_KEY: config.revnuvoApiKey } : {}
+    })
