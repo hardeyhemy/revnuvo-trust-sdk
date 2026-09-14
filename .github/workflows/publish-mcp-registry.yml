@@ -24,7 +24,7 @@ jobs:
           ./bin/mcp-publisher --version
 
       - name: Authenticate via GitHub Actions OIDC
-        run: ./bin/mcp-publisher login github-actions
+        run: ./bin/mcp-publisher login github-oidc
 
       - name: Publish server.json
         run: ./bin/mcp-publisher publish server.json
