@@ -2,39 +2,31 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.hardeyhemy/revnuvo-trust-mcp",
   "title": "Revnuvo Trust",
-  "description": "Verify companies, domains and counterparties from inside any AI agent. Entity resolution (200+ jurisdictions), UBO discovery, sanctions/PEP screening, 0-100 fraud scoring. x402-payable ($0.10/call USDC on Base) or API key.",
+  "description": "Verify companies, domains and counterparties before transacting. Sanctions, UBO, fraud scoring.",
   "version": "0.1.0",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.revnuvo.site/mcp",
-      "transport": "streamable-http"
+      "url": "https://api.revnuvo.site/mcp"
     }
   ],
   "packages": [
     {
-      "registry_type": "npm",
       "identifier": "revnuvo-trust-mcp",
       "version": "0.1.0",
-      "environment_variables": [
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "environmentVariables": [
         {
           "name": "REVNUVO_API_KEY",
-          "description": "Revnuvo API key (optional — x402 pay-per-call used if omitted)",
-          "is_required": false,
-          "is_secret": true
+          "description": "Revnuvo API key (optional \u2014 x402 pay-per-call used if omitted)",
+          "isRequired": false,
+          "isSecret": true
         }
-      ]
+      ],
+      "transport": {
+        "type": "stdio"
+      }
     }
-  ],
-  "publisher_provided": {
-    "homepage": "https://www.revnuvo.site/products/trust",
-    "documentation": "https://revnuvo.site/llms.txt",
-    "support": "Ismael@revnuvo.site",
-    "payment": {
-      "protocol": "x402",
-      "price_per_call_usd": 0.10,
-      "network": "base",
-      "asset": "USDC"
-    }
-  }
+  ]
 }

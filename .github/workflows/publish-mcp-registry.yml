@@ -1,0 +1,28 @@
+name: Publish to official MCP Registry
+
+on:
+  push:
+    branches: [main]
+    paths: ['server.json']
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mcp-publisher
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/modelcontextprotocol/registry/main/scripts/install-publisher.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Authenticate via GitHub Actions OIDC
+        run: mcp-publisher login github-actions
+
+      - name: Publish server.json
+        run: mcp-publisher publish server.json
