@@ -13,7 +13,7 @@
   "packages": [
     {
       "identifier": "revnuvo-trust-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "environmentVariables": [
