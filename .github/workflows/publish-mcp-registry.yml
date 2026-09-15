@@ -3,7 +3,7 @@ name: Publish to official MCP Registry
 on:
   push:
     branches: [main]
-    paths: ['server.json']
+    paths: ['server.json', 'server-company-intelligence.json']
   workflow_dispatch:
 
 permissions:
@@ -26,5 +26,8 @@ jobs:
       - name: Authenticate via GitHub Actions OIDC
         run: ./bin/mcp-publisher login github-oidc
 
-      - name: Publish server.json
+      - name: Publish Trust server
         run: ./bin/mcp-publisher publish server.json
+
+      - name: Publish Company Intelligence server
+        run: ./bin/mcp-publisher publish server-company-intelligence.json

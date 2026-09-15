@@ -1,0 +1,19 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.hardeyhemy/revnuvo-company-intelligence",
+  "title": "Revnuvo Company Intelligence",
+  "description": "Company change intelligence for AI agents. Query what a company is using and what changed: observed technologies with evidence and confidence, website/infrastructure state, change timelines, and technology-adoption signals. Free developer key (100 calls/mo) or x402 pay-per-call.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.revnuvo.site/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer Revnuvo API key (rvk_...). Free key at https://app.revnuvo.site — no human approval required. x402 pay-per-call available on the REST surface without a key."
+        }
+      ]
+    }
+  ]
+}
