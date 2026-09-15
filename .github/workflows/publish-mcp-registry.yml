@@ -26,8 +26,24 @@ jobs:
       - name: Authenticate via GitHub Actions OIDC
         run: ./bin/mcp-publisher login github-oidc
 
+      # Idempotent: re-runs skip an already-published (duplicate) version but
+      # still fail loudly on any other publish error.
       - name: Publish Trust server
-        run: ./bin/mcp-publisher publish server.json
+        run: |
+          if ! out=$(./bin/mcp-publisher publish server.json 2>&1); then
+            if echo "$out" | grep -q "cannot publish duplicate version"; then
+              echo "Trust server already published at this version — skipping"
+            else
+              echo "$out"; exit 1
+            fi
+          fi
 
       - name: Publish Company Intelligence server
-        run: ./bin/mcp-publisher publish server-company-intelligence.json
+        run: |
+          if ! out=$(./bin/mcp-publisher publish server-company-intelligence.json 2>&1); then
+            if echo "$out" | grep -q "cannot publish duplicate version"; then
+              echo "Company Intelligence server already published at this version — skipping"
+            else
+              echo "$out"; exit 1
+            fi
+          fi
